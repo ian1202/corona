@@ -1,9 +1,8 @@
-hackcorona
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>ArcGIS JavaScript API: Coronavirus App</title>
+  <title>CoroNo</title>
   <style>
     html, body, #viewDiv {
       padding: 0; margin: 0; height: 100%; width: 100%; background: black;
@@ -11,10 +10,39 @@ hackcorona
   </style>
   <link rel="stylesheet" href="https://js.arcgis.com/4.14/esri/themes/dark/main.css">
   <script src="https://js.arcgis.com/4.14/"></script>
-  <script src="hackcorona.js"></script>
+
+  <!---navbar-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-  <div id="viewDiv"></div>
-   <h1>Hello</h1>
+
+    <header id="iy-header" class="" role="banner">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">CoronNo</a>
+              </div>
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="yourstatus.html">Your Status</a></li>
+                <li><a href="#">Heat Map</a></li>
+                <li><a href="#">Your QR Code</a></li>
+              </ul>
+              <button class="btn btn-danger navbar-btn">Contact Your Doctor</button>
+            </div>
+          </nav>
+</header>
+    <div class="container-fluid">
+        <div class="map-title">
+            <h1> Cases Near You</h1>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div id="viewDiv"></div>
+    </div>
+
+
 </body>
 </html>
