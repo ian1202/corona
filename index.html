@@ -113,33 +113,6 @@
     </script>
 
 
-<script>
-    var socket = io()
-    $(() => {
-        $(window).load(()=>{
-            var message = {message: $("#demo").val()}
-            postMessage(message)
-        })
-        getMessages()
-    })
-
-    socket.on('message', addMessage)
-
-    function addMessage(message){
-        $("#demo").append(`<h4> ${message.name} </h4> <p> ${message.message} </p>`)
-    }
-
-    function getMessages() {
-        $.get('http://localhost:3000/messages', (data) => {
-            data.forEach(addMessage);
-        })
-    }
-
-    function postMessage(message) {
-        $.post('http://localhost:3000/messages', message)
-    }
-</script>
-
 </body>
 
 </html>
