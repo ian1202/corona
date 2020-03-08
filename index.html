@@ -36,9 +36,6 @@
 
                 <div class="col-md-12 col-sm-12">
 
-
-                    <p>Click the button to get your coordinates.</p>
-
                     <p id="demo"></p>
 
                     <div class="section-title text-center">
@@ -57,9 +54,9 @@
 
                 <div class="col-md-12 col-sm-12">
                     <div class="instructions">
-                    <h2> What Does This Mean?</h2>
+                    <h2> What Does This Mean? </h2>
 
-                    <p>• A yellow status means that have <b>not</b> come into contact with any virus career.</p>
+                    <p>• You have <b>not</b> come into contact with any virus career.</p>
                     <br>
                     <p>• Wash your hands often and stay away from crowded areas.</p>
                     <br>
@@ -76,7 +73,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <!-- Bootstrap -->
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
 
 <script>
         $(document).ready(function(){
@@ -99,10 +96,9 @@
 
 <script>
 
-    
     var x = document.getElementById("demo");
     
-    $(window).load (function getLocation() {
+    $(window).ready (function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else { 
@@ -117,6 +113,33 @@
     </script>
 
 
+<script>
+    var socket = io()
+    $(() => {
+        $(window).load(()=>{
+            var message = {message: $("#demo").val()}
+            postMessage(message)
+        })
+        getMessages()
+    })
+
+    socket.on('message', addMessage)
+
+    function addMessage(message){
+        $("#demo").append(`<h4> ${message.name} </h4> <p> ${message.message} </p>`)
+    }
+
+    function getMessages() {
+        $.get('http://localhost:3000/messages', (data) => {
+            data.forEach(addMessage);
+        })
+    }
+
+    function postMessage(message) {
+        $.post('http://localhost:3000/messages', message)
+    }
+</script>
 
 </body>
+
 </html>
