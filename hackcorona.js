@@ -1,22 +1,3 @@
-//progress rings// 
-    $(document).ready(function(){
-    $('.progress-value > span').each(function(){
-        $(this).prop('Counter',0).animate({
-            Counter: $(this).text()
-        },{
-            duration: 3500,
-            easing: 'swing',
-            step: function (now){
-                $(this).text(Math.ceil(now));
-            }
-        });
-    });
-});
-
-
-
-//heatmap//
-
 require([
     "esri/Map",
     "esri/views/MapView",
@@ -37,7 +18,7 @@ require([
     var view = new MapView({
       container: "viewDiv",
       map: map,
-      center: [-20, 35],
+      center: [-120, 135],
       zoom: 2
     });
   });
