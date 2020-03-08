@@ -15,15 +15,15 @@
 </head>
 <body>
 
-<header id="iy-header" class="" role="banner">
+    <header id="iy-header" class="" role="banner">
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
               <div class="navbar-header">
-                <a class="navbar-brand" href="yourstatus.html">CoronNo</a>
+                <a style="color: white; font-size:28px;" class="navbar-brand" href="index.html">CoronNo</a>
               </div>
               <ul class="nav navbar-nav">
-                <li><a href="yourstatus.html">Your Status</a></li>
-                <li><a href="index.html">Heat Map</a></li>
+                <li><a href="index.html">Your Status</a></li>
+                <li><a href="heatmap.html">Heat Map</a></li>
                 <li class="active"><a href="qrcode.html">Your QR Code</a></li>
               </ul>
               <span><a href="tel:2018567441"> <button class="btn btn-danger navbar-btn">Contact Your Doctor</button></a></span>
@@ -52,27 +52,5 @@
 
     </div>
 
- <!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<!-- Bootstrap -->
-<script src="assets/js/bootstrap.min.js"></script>
-
-<script>
-        $(document).ready(function(){
-    $('.progress-value > span').each(function(){
-        $(this).prop('Counter',0).animate({
-            Counter: $(this).text()
-        },{
-            duration: 3500,
-            easing: 'swing',
-            step: function (now){
-                $(this).text(Math.ceil(now));
-            }
-        });
-    });
-});
-
-</script>
 </body>
 </html>

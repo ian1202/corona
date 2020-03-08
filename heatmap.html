@@ -1,0 +1,72 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>CoroNo</title>
+
+  <!---navbar-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+   <!---heatmap-->
+  <style>
+    html, body, #viewDiv {
+      padding: 0; margin: 0; height: 100%; width: 100%; background: black;
+    }
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.14/esri/themes/dark/main.css">
+  <script src="https://js.arcgis.com/4.14/"></script>
+</head>
+
+<header id="iy-header" class="" role="banner">
+  <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a style="color: white; font-size:28px;" class="navbar-brand" href="index.html">CoronNo</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="index.html">Your Status</a></li>
+          <li class="active"><a href="heatmap.html">Heat Map</a></li>
+          <li><a href="qrcode.html">Your QR Code</a></li>
+        </ul>
+        <span><a href="tel:2018567441"> <button class="btn btn-danger navbar-btn">Contact Your Doctor</button></a></span>
+      </div>
+    </nav>
+</header>
+
+
+<body>
+    
+  <div id="viewDiv"></div>
+
+
+<script>
+        require([
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/layers/FeatureLayer"
+    ], function(Map, MapView, FeatureLayer) {
+      var map = new Map({
+        basemap: "streets-night-vector"
+      });
+      var lyr = new FeatureLayer({
+        url: "https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/Coronavirus_2019_nCoV_Cases/FeatureServer/1",
+        outFields: ["*"],
+        popupTemplate: {
+          title: "Coranavirus Data",
+          content: "Confirmed: {Confirmed}<br>Deaths: {Deaths}<br> Recovered: {Recovered}"
+        }
+      });
+      map.add(lyr);
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [-20, 35],
+        zoom: 2
+      });
+    });
+</script>
+
+</body>
+</html>
